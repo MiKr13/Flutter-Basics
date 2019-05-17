@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 
-main() {
-  runApp(MyApp());
-}
+main() => runApp(MyApp()); //for one line functions, can use =>
 
 class MyApp extends StatelessWidget {
   @override
