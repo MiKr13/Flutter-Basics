@@ -4,9 +4,15 @@ import 'package:flutter/widgets.dart';
 class Products extends StatelessWidget {
   final List<String> products;
   
-  Products(this.products) {
+  // Products(this.products) {
+  //   // only writting this.products inilialized it, no need tp do this.x = x;
+  // }
+
+  /* New way: having default value */
+  Products([this.products = const []]) {
     // only writting this.products inilialized it, no need tp do this.x = x;
   }
+
   @override
   Widget build(BuildContext context) {
     return Column(children: products.map((el) => Card(
@@ -19,11 +25,7 @@ class Products extends StatelessWidget {
 						RichText(
 							text: TextSpan(
 								text: el,
-								style: TextStyle(
-									// decoration: TextDecoration.underline,
-									color: Colors.grey[600],
-									fontStyle: FontStyle.italic
-								),
+								style: Theme.of(context).textTheme.body1,
 							),
 						)
 					],

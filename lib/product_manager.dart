@@ -5,7 +5,8 @@ import './products.dart';
 class ProductManager extends StatefulWidget {
   final String startingProduct;
 
-  ProductManager(this.startingProduct); // constructor
+  // ProductManager(this.startingProduct); // constructor
+  ProductManager({this.startingProduct}); // different way of passing data with names key anc value
 
   @override
   State<StatefulWidget> createState() {
@@ -37,17 +38,13 @@ class _ProductManagerState extends State<ProductManager> {
               },
               elevation: 5,
               highlightElevation: 0,
-              color: Colors.blue[200],
               child: RichText(
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(text: "Add "),
                     TextSpan(
                       text: "NEW!",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontStyle: FontStyle.italic,
-                          color: Colors.lime),
+                      style: Theme.of(context).textTheme.title,
                     ),
                   ],
                 ),
