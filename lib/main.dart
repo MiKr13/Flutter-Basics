@@ -26,16 +26,20 @@ class _AppState extends State<MyApp> {
       	body: Column(children: [
         	Container(
 				child: RaisedButton(
-					onPressed: () {},
+					onPressed: () {
+						setState(() {
+							_products.add('Advanced Broccoli');
+						});
+					},
 					elevation: 5,
 					highlightElevation: 0,
 					color: Colors.blue[200],
 					child: RichText(
 						text: TextSpan(
 						children: <TextSpan>[
-							TextSpan(text: "What's "),
+							TextSpan(text: "Add "),
 							TextSpan(
-							text: "NEW",
+							text: "NEW!",
 							style: TextStyle(
 								fontWeight: FontWeight.w300,
 								fontStyle: FontStyle.italic,
@@ -51,29 +55,20 @@ class _AppState extends State<MyApp> {
 			Column(children: _products.map((el) => Card(
 				child: Column(
 					children: <Widget>[
-					Image.asset('assests/image_riviera_broccoli.jpg'),
-					el.split(' ').length == 2
-						? RichText(
+						Image.asset(
+							'assests/image_riviera_broccoli.jpg',
+							fit: BoxFit.cover,
+						),
+						RichText(
 							text: TextSpan(
-								children: <TextSpan>[
-								TextSpan(
-									text: el.split(' ')[0],
-									style: TextStyle(
-										decoration:
-											TextDecoration.underline,
-										color: Colors.black),
+								text: el,
+								style: TextStyle(
+									// decoration: TextDecoration.underline,
+									color: Colors.grey[600],
+									fontStyle: FontStyle.italic
 								),
-								TextSpan(
-									text: ' ${el.split(' ')[1]}',
-									style: TextStyle(
-										fontWeight: FontWeight.w300,
-										fontStyle: FontStyle.italic,
-										color: Colors.lime),
-								),
-								],
 							),
-							)
-						: Text(el),
+						)
 					],
 				),
 				margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
