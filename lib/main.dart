@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
               title: Text('Shopping List'),
               backgroundColor: Colors.blue[300],
           ),
-          body: ProductManager(),
+          body: ProductManager('Broccoli'), // Passing data to statefull widget
       )
     );
   }
