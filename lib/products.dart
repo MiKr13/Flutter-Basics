@@ -32,6 +32,7 @@ class Products extends StatelessWidget {
 				),
 				margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
 				elevation: 5,
-			),).toList());
+			),
+    ).toList());
   }
 }
