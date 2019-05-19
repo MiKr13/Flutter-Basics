@@ -15,7 +15,7 @@ class Products extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: products.map((el) => Card(
+    return ListView(children: products.map((el) => Card(
 				child: Column(
 					children: <Widget>[
 						Image.asset(
@@ -33,6 +33,6 @@ class Products extends StatelessWidget {
 				margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
 				elevation: 5,
 			),
-    ).toList());
+    ).toList(),);
   }
 }

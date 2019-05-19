@@ -67,7 +67,10 @@ class _ProductManagerState extends State<ProductManager> {
           ),
           margin: EdgeInsets.symmetric(vertical: 5)
         ),
-        Products(_products)
+        Expanded(
+          child: Products(_products),
+        )
+        // Products(_products)
       ],
     );
   }

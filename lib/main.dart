@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart'; // for debugging
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_basics/product_manager.dart';
 
-void main() {
-  debugPaintSizeEnabled = true; // for boxing and margin
-  debugPaintBaselinesEnabled = true; // for baseling of text
-  debugPaintPointersEnabled = true; // for highlighting tap event
-  runApp(MyApp());
-} 
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
