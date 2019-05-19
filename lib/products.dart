@@ -13,9 +13,8 @@ class Products extends StatelessWidget {
     // only writting this.products inilialized it, no need tp do this.x = x;
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return ListView(children: products.map((el) => Card(
+  Widget _buildProductItem(BuildContext context, int index) {
+    return Card(
 				child: Column(
 					children: <Widget>[
 						Image.asset(
@@ -24,7 +23,7 @@ class Products extends StatelessWidget {
 						),
 						RichText(
 							text: TextSpan(
-								text: el,
+								text: products[index],
 								style: Theme.of(context).textTheme.body1,
 							),
 						)
@@ -32,7 +31,14 @@ class Products extends StatelessWidget {
 				),
 				margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
 				elevation: 5,
-			),
-    ).toList(),);
+			);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemBuilder: _buildProductItem,
+      itemCount: products.length,
+    );
   }
 }
