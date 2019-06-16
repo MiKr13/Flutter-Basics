@@ -35,10 +35,14 @@ class Products extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildProductList(BuildContext context) {
     Widget productCard = Center(
-      child: Text('No items added, please add some'),
+      child: RichText(
+        text:  TextSpan(
+          text: 'No item added, please add some!',
+          style: Theme.of(context).textTheme.title
+        )
+      ),
     );
     if (products.length > 0) {
       productCard = ListView.builder(
@@ -47,5 +51,10 @@ class Products extends StatelessWidget {
       );
     }
     return productCard;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildProductList(context);
   }
 }
