@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_basics/product_manager.dart';
+import 'package:flutter_basics/pages/home.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,15 +22,7 @@ class MyApp extends StatelessWidget {
           body1: TextStyle(fontSize: 14.0, fontFamily: 'Hind', fontStyle: FontStyle.italic),
         ),
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Shopping List'
-          )
-        ),
-        // body: ProductManager('Broccoli'), // Passing data to statefull widget
-        body: ProductManager(),
-      )
+      home: HomePage()
     );
   }
 }
