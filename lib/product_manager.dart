@@ -6,7 +6,7 @@ class ProductManager extends StatefulWidget {
   final String startingProduct; // NOTE watch `26. Understanding const & final`
 
   // ProductManager(this.startingProduct); // constructor
-  ProductManager({this.startingProduct}); // different way of passing data with names key anc value
+  ProductManager({this.startingProduct}); // different way of passing data with names key and value
 
   @override
   State<StatefulWidget> createState() {
@@ -20,8 +20,10 @@ class _ProductManagerState extends State<ProductManager> {
 
   @override
   void initState() {
+    if (widget.startingProduct != null) {
     // we can have used setstate too but there's no need to re-render a data coming from other file on file execution
-    _products.add(widget.startingProduct); // we get the data without using constructor
+    _products.add(widget.startingProduct); // we get the data without using constructor 
+    }
     super.initState();
   }
 
