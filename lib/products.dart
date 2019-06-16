@@ -13,6 +13,7 @@ class Products extends StatelessWidget {
     // only writting this.products inilialized it, no need tp do this.x = x;
   }
 
+  // _ is put in front of method name which is only going to be used inside this class, a convention.
   Widget _buildProductItem(BuildContext context, int index) {
     return Card(
 				child: Column(

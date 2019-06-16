@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           )
         ),
         // body: ProductManager('Broccoli'), // Passing data to statefull widget
-        body: ProductManager(startingProduct: 'Broccoli',),
+        body: ProductManager(),
       )
     );
   }
