@@ -4,14 +4,15 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_basics/pages/product.dart';
 
 class Products extends StatelessWidget {
-  final List<String> products;
+  final List<Map<String, String>> products;
+  final Function deleteProduct;
 
   // Products(this.products) {
   //   // only writting this.products inilialized it, no need tp do this.x = x;
   // }
 
   /* New way: having default value */
-  Products([this.products = const []]) {
+  Products(this.products, {this.deleteProduct}) {
     // only writting this.products inilialized it, no need tp do this.x = x;
   }
 
@@ -21,12 +22,12 @@ class Products extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(
-            'assests/image_riviera_broccoli.jpg',
+            products[index]['imageUrl'],
             fit: BoxFit.cover,
           ),
           RichText(
             text: TextSpan(
-              text: products[index],
+              text: '${products[index]['title']} $index',
               style: Theme.of(context).textTheme.body1,
             ),
           ),
@@ -35,12 +36,18 @@ class Products extends StatelessWidget {
             children: <Widget>[
               FlatButton(
                 child: Text('Show Details'),
-                onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => ProductPage(),
-                  ),
-                ),
+                onPressed: () => Navigator.push<bool>(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ProductPage(
+                            '${products[index]['title']} $index',
+                            products[index]['imageUrl']),
+                      ),
+                ).then((bool value) {
+                  if (value) {
+                    deleteProduct(index);
+                  }
+                }),
               ),
               FlatButton(
                 child: Text('Add to Wishlist'),

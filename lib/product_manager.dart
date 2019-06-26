@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './products.dart';
 
 class ProductManager extends StatefulWidget {
-  final String startingProduct; // NOTE watch `26. Understanding const & final`
+  final Map<String, String> startingProduct; // NOTE watch `26. Understanding const & final`
 
   // ProductManager(this.startingProduct); // constructor
   ProductManager({this.startingProduct}); // different way of passing data with names key and value
@@ -16,7 +16,7 @@ class ProductManager extends StatefulWidget {
 
 class _ProductManagerState extends State<ProductManager> {
   // _ makes it private to not be used by other files
-  List<String> _products = [];
+  List<Map<String, String>> _products = [];
 
   @override
   void initState() {
@@ -28,11 +28,17 @@ class _ProductManagerState extends State<ProductManager> {
   }
 
   // NOTE watch `25. Passing Data Up` for button being in different file
-  // void _addProducts(String product) {
-  //   setState(() {
-  //    _products.add(product); 
-  //   });
-  // }
+  void _addProducts(Map<String, String> product) {
+    setState(() {
+     _products.add(product); 
+    });
+  }
+
+  void _deleteProduct(int index) {
+    setState(() {
+     _products.removeAt(index); 
+    });
+  }
 
   // NOTE In product control file to get this, we put a constructor
   // final Function addProduct
@@ -48,10 +54,9 @@ class _ProductManagerState extends State<ProductManager> {
           // child: ProductControl(_addProduct)
           child: RaisedButton(
             onPressed: () {
-              setState(() {
-                _products.add('Advanced Broccoli');
-              });
+              _addProducts({'title': 'Advanced Broccoli', 'imageUrl': 'assests/image_riviera_broccoli.jpg'});
             },
+            color: Theme.of(context).accentColor,
             elevation: 5,
             highlightElevation: 0,
             child: RichText(
@@ -70,7 +75,7 @@ class _ProductManagerState extends State<ProductManager> {
           margin: EdgeInsets.symmetric(vertical: 5)
         ),
         Expanded(
-          child: Products(_products),
+          child: Products(_products, deleteProduct: _deleteProduct),
         )
         // Products(_products)
       ],
